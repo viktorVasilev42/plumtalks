@@ -1,0 +1,186 @@
+.mainContainer {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    width: 100vw;
+}
+
+.appBar {
+    background-color: rgba(16, 136, 255, 0.9);
+    height: 100%;
+    width: 10vw;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.appBar .profileDiv {
+    display: flex; gap: 0.5vw;
+    justify-content: flex-start;
+    padding-left: 0.8vw;
+    align-items: center;
+    height: 10vh;
+}
+
+.appBar .appBarButton {
+    display: flex; gap: 0.5vw;
+    justify-content: flex-start;
+    padding-left: 0.8vw;
+    align-items: center;
+    height: 10vh;
+    cursor: pointer;
+}
+
+.appBar .appBarButtonSelected {
+    background-color: rgb(8, 130, 252);
+}
+
+.appBar .appBarButton .animationButton {
+    height: 10vh;
+    width: 2vw;
+    border-radius: 50%;
+    position: absolute;
+    left: 8vw;
+    background-color: rgba(3, 114, 225, 0);
+}
+
+.appBar .appBarButton .hoveredAnimationButton { 
+    transition: 0.3s;
+    background-color: rgba(3, 114, 225, 0.5);
+    height: 10vh;
+    width: 10vw;
+    left: 0vw;
+    border-radius: 0%;
+    cursor: pointer;
+}
+
+.appBar .secondaryAppBarButtons {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 60vh;
+}
+
+.messagesBar {
+    background-color: rgb(199, 216, 233);
+    height: 100vh;
+    width: 25vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.messagesBar .legendDiv {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 8vh;
+}
+
+.messagesBar .legendDiv .legendItem {
+    display: flex; gap: 0.5vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.messagesBar .legendDiv .legendItem .legendItemBadge {
+    height: 2vh; width: 2vh;
+    border-radius: 50%;
+    border: 0.2vh solid lightgray;
+}
+
+.messagesBar .chatCardsDivParent {
+    height: 91.85vh;
+    width: 25vw;
+    overflow: hidden;
+}
+
+.messagesBar .chatCardsDiv {
+    display: flex; flex-direction: column;
+    height: 92vh; width: 25vw;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-right: 2vw;
+    box-sizing: content-box;
+}
+
+.messagesBar .chatCardsDiv .chatCard {
+    display: flex;
+    height: 23vh;
+    width: 25vw;
+    padding: 1vw 0vw 1vw 1vw;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.messagesBar .chatCardsDiv .chatCardSelected {
+    background-color: rgb(231, 242, 246, 0.8);
+}
+
+.messagesBar .chatCardsDiv .chatCard:hover {
+    background-color: rgb(231, 242, 246);
+    transition: 0.7s;
+}
+
+.messagesBar .chatCardsDiv .profileCard {
+    display: flex;
+    height: 23vh;
+    width: 25vw;
+    padding-left: 1vw;
+    cursor: pointer;
+}
+
+.messagesBar .chatCardsDiv .profileCard:hover {
+    background-color: rgb(231, 242, 246);
+    transition: 0.7s;
+}
+
+.messagesBar .chatCardsDiv .profileCardSelected {
+    background-color: rgb(231, 242, 246, 0.8);
+}
+
+.messagesBar .chatCardsDiv .chatCard .legendBadge {
+    height: 4vh; width: 0.25vw;
+}
+
+.chatScreen {
+    display: flex; flex-direction: column;
+    width: 65vw; height: 100vh;
+
+    .chatToolBar {
+        display: flex; gap: 1vw;
+        width: 65vw; height: 8vh;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .gradientDivider {
+        height: 0.2vh; width: 65vw;
+        background: linear-gradient(90deg, rgba(162, 194, 225, 0) 0%, rgba(162, 194, 225, 0.4) 20%);
+    }
+
+    .messagesContainer {
+        display: flex; flex-direction: column-reverse;
+        height: 84.8vh; width: 65vw; padding: 1vw; gap: 2vh;
+        overflow-y: scroll;
+        overflow-x: hidden;
+
+        .chatBubbleLeft {
+            display: flex;
+            width: 63vw;
+        }
+
+        .chatBubbleRight {
+            display: flex;
+            width: 63vw;
+            justify-content: flex-end;
+        }
+    }
+
+    .sendBar {
+        display: flex; 
+        justify-content: flex-start; align-items: center; gap: 0.5vw;
+        height: 7vh; width: 65vw;
+        padding-inline: 1vw;
+    }
+}
+

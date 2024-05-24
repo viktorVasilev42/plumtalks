@@ -1,0 +1,32 @@
+# dependencies
+/node_modules
+
+# next.js
+/.next
+/out
+/build
+
+# production
+*.log
+*.env.local
+*.env.development.local
+*.env.test.local
+*.env.production.local
+
+# misc
+.DS_Store
+*.pem
+
+# testing
+/coverage
+
+# yarn v2
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# IDE files
+.vscode
+.idea

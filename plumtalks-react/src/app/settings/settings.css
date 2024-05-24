@@ -1,0 +1,63 @@
+.settingsContainer {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    padding: 10vh 10vw 10vh 10vw;
+    background-color: aliceblue;
+}
+
+.settingsBar {
+    display: flex; flex-direction: column;
+    height: 80vh; width: 15vw; gap: 1vh;
+
+    .settingsBarButton {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        border-radius: 0.5vw;
+        height: 7vh; width: 15vw;
+    }
+
+    .settingsBarButtonSelected {
+        background-color: rgb(123, 202, 255);
+        transition: 1s;
+    }
+
+    .settingsBarButton:hover {
+        background-color: rgb(185, 224, 250);
+        transition: 1s;
+    }
+}
+
+.settingsActiveScreen {
+    display: flex; flex-direction: column;
+    height: 80vh; width: 65vw;
+
+    .accountSettingsScreen {
+        display: flex; flex-direction: column;
+        gap: 2vh;
+        align-items: center;
+        height: 80vh; width: 65vw;
+
+        .profileForm {
+            display: flex; flex-direction: column; gap: 2vh;
+            height: 30vh; width: 60vw;
+            background-color: rgb(248, 251, 255);
+            border-radius: 1vw;
+            padding: 1vw;
+
+            .credentials {
+                display: flex; flex-direction: row; 
+                justify-content: center;
+                width: 58vw;
+                gap: 1vw;
+            }
+
+            .displayPart {
+                display: flex; gap: 1vw;
+                justify-content: center;
+                width: 58vw;
+            }
+        }
+    }
+}
