@@ -23,8 +23,8 @@ export default function useChatSocket() {
         const onConnected = (newStompClient: Client) => {
             if (!newStompClient) return;
             setStompClient(newStompClient);
-            let msgSub = newStompClient?.subscribe(`/user/${authContext?.userId}/private`, onPrivateMessageRecieved);
-            let typeSub = newStompClient?.subscribe(`/user/${authContext?.userId}/typing`, onTypingReceived)
+            let msgSub = newStompClient?.subscribe(`/user/${authContext?.userId}/private`, onPrivateMessageRecieved, { authToken: `${authContext?.authToken}` });
+            let typeSub = newStompClient?.subscribe(`/user/${authContext?.userId}/typing`, onTypingReceived, { authToken: `${authContext?.authToken}` });
 
             clientSubs.push(msgSub);
             clientSubs.push(typeSub);
@@ -65,7 +65,7 @@ export default function useChatSocket() {
         
         let Sock: WebSocket | null = new SockJS("http://localhost:8080/ws");
         let newStompClient: Client | null = over(Sock);
-        newStompClient?.connect({}, () => onConnected(newStompClient!), onError);
+        newStompClient?.connect({ authToken: `${authContext?.authToken}` }, () => onConnected(newStompClient!), onError);
 
         return () => {
             Sock = null;

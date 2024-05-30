@@ -19,7 +19,6 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class ApplicationUserRepository {
     private final JdbcTemplate jdbcTemplate;
-    private final ProfileRepository profileRepository;
 
     public void save(ApplicationUser newUser) {
         String sql = "INSERT INTO user (username, password, verificationCode, enabled) VALUES (?,?,?,?)";
@@ -38,8 +37,6 @@ public class ApplicationUserRepository {
             String roleSql = "INSERT IGNORE INTO user_role_junction (userId, roleId) VALUES (?,?)";
             jdbcTemplate.update(roleSql, keyHolder.getKey().intValue(), authority.getId());
         }
-
-        profileRepository.save(new Profile(keyHolder.getKey().intValue(), newUser.getUsername()));
     }
 
     public void update(ApplicationUser user) {

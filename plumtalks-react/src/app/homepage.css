@@ -45,7 +45,7 @@
 }
 
 .appBar .appBarButton .hoveredAnimationButton { 
-    transition: 0.3s;
+    transition: width 0.3s, left 0.3s, border-radius 0.3s, background-color 0.3s;
     background-color: rgba(3, 114, 225, 0.5);
     height: 10vh;
     width: 10vw;

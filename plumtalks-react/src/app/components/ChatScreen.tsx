@@ -29,7 +29,7 @@ export default function ChatScreen() {
             content: currMessage,
             timestamp: new Date()
         };
-        chatSocket.stompClient.send("/app/message", {}, JSON.stringify(newMsg));
+        chatSocket.stompClient.send("/app/message", { authToken: `${authContext?.authToken}` }, JSON.stringify(newMsg));
         if (chatMapContext?.chatMap.get(contactContext?.selectedContact!)) {
             chatMapContext.chatMap.get(contactContext?.selectedContact!)?.push(newMsg);
             chatMapContext.setChatMap(new Map(chatMapContext.chatMap));
@@ -56,7 +56,7 @@ export default function ChatScreen() {
             receiverId: contactContext?.selectedContact,
             senderId: Number(authContext?.userId)
         };
-        chatSocket.stompClient.send("/app/typing", {}, JSON.stringify(newTypingDTO));
+        chatSocket.stompClient.send("/app/typing", { authToken: `${authContext?.authToken}` }, JSON.stringify(newTypingDTO));
     }
 
     const handleEnter = (event: KeyboardEvent<HTMLInputElement>) => {
@@ -73,7 +73,7 @@ export default function ChatScreen() {
             receiverId: contactContext?.prevContact,
             senderId: Number(authContext?.userId)
         }
-        chatSocket?.stompClient?.send("/app/typing", {}, JSON.stringify(newTypingDTO))
+        chatSocket?.stompClient?.send("/app/typing", { authToken: `${authContext?.authToken}` }, JSON.stringify(newTypingDTO))
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [contactContext?.selectedContact])
 

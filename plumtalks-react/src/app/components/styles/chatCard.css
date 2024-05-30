@@ -1,0 +1,33 @@
+.chatCardMenu {
+    height: 0vh; width: 12vw;
+    flex-direction: column;
+    position: absolute;
+    z-index: 9999;
+    background-color: rgba(122, 156, 191, 1);
+    transition: height 0.2s;
+    overflow: hidden;
+}
+
+.chatCardMenuActive {
+    height: 15vh;
+}
+
+.chatCardMenu .chatCardMenuItem {
+    height: 5vh; width: 12vw;
+    display: flex; align-items: center;
+
+    .itemBadge {
+        height: 5vh; width: 3vw;
+        display: flex; justify-content: center; align-items: center;
+    }
+
+    .itemText {
+        height: 5vh; width: 10vw;
+        display: flex; align-items: center;
+    }
+}
+
+.chatCardMenu .chatCardMenuItem:hover {
+    background-color: rgb(88, 112, 136);
+    transition: 1s;
+}
