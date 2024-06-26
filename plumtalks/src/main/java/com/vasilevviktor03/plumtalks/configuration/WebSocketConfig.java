@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageChannel;
+import org.springframework.messaging.MessageDeliveryException;
 import org.springframework.messaging.simp.config.ChannelRegistration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.messaging.simp.stomp.StompCommand;
@@ -20,9 +21,7 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 @EnableWebSocketMessageBroker
 @RequiredArgsConstructor
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
-    private final AuthenticationManager authManager;
     private final JwtDecoder jwtDecoder;
-    private final ApplicationUserRepository userRepository;
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
@@ -45,11 +44,20 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
                 if (StompCommand.UNSUBSCRIBE.equals(accessor.getCommand()))
                     return message;
-
-                String authToken = accessor.getFirstNativeHeader("authToken");
-                jwtDecoder.decode(authToken).getClaimAsString("sub");
-                return message;
+                if (StompCommand.DISCONNECT.equals(accessor.getCommand())) {
+                    return message;
+                }
+                
+                try {
+                    String authToken = accessor.getFirstNativeHeader("authToken");
+                    jwtDecoder.decode(authToken).getClaimAsString("sub");
+                    return message;
+                }
+                catch (Exception e) {
+                    System.out.println("JWT Decoding Failed.");
+                    return null;
+                }
             }
-        });
+        }); 
     }
 }

@@ -15,11 +15,13 @@ export default function RootLayout({
 }>) {
   const { authToken, isLoading, handleLogin, handleLogout, handleRegister, userId, displayName } = useAuth();
 
-  return (
-    <html lang="en">
-      <AuthContext.Provider value={{authToken, isLoading, handleLogin, handleLogout, userId, displayName, handleRegister}}>
-        <body className={inter.className}>{children}</body>
-      </AuthContext.Provider>
-    </html>
-  );
+    return (
+        <html lang="en">
+            <body className={inter.className}>
+                <AuthContext.Provider value={{ authToken, isLoading, handleLogin, handleLogout, userId, displayName, handleRegister }}>
+                    {children}
+                </AuthContext.Provider>
+            </body>
+        </html>
+    );
 }

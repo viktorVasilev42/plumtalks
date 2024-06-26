@@ -1,16 +1,15 @@
 "use client"
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 import AppBar from './components/AppBar';
 import ChatScreen from './components/ChatScreen';
 import MessagesBar from './components/MessagesBar';
 import './homepage.css';
 import { CircularProgress } from '@mui/joy';
 import { AuthContext } from './layout';
-import { ChatSocketInterface } from './interfaces/ChatSocketInterface';
 
-export const AppBarContext = createContext<AppBarContextInterface | null>(null);
-export const ContactContext = createContext<ContactContextInterface | null>(null);
-export const ChatMapContext = createContext<ChatMapContextInterface | null>(null);
+const AppBarContext = createContext<AppBarContextInterface | null>(null);
+const ContactContext = createContext<ContactContextInterface | null>(null);
+const ChatMapContext = createContext<ChatMapContextInterface | null>(null);
 
 export default function Home() {
   const authContext = useContext(AuthContext);
@@ -41,3 +40,5 @@ export default function Home() {
     </div>
   );
 }
+
+export { AppBarContext, ContactContext, ChatMapContext }

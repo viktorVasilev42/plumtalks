@@ -1,11 +1,9 @@
 package com.vasilevviktor03.plumtalks.service;
 
-import com.vasilevviktor03.plumtalks.model.ApplicationUser;
-import com.vasilevviktor03.plumtalks.model.Role;
-import com.vasilevviktor03.plumtalks.model.dto.LoginResponseDTO;
-import jakarta.mail.MessagingException;
-import jakarta.mail.internet.MimeMessage;
-import lombok.RequiredArgsConstructor;
+import java.io.UnsupportedEncodingException;
+import java.util.Random;
+import java.util.Set;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -14,14 +12,17 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.io.UnsupportedEncodingException;
-import java.util.Random;
-import java.util.Set;
+import com.vasilevviktor03.plumtalks.model.ApplicationUser;
+import com.vasilevviktor03.plumtalks.model.Role;
+import com.vasilevviktor03.plumtalks.model.dto.LoginResponseDTO;
+
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
+import lombok.RequiredArgsConstructor;
 
 @Service
 @Transactional

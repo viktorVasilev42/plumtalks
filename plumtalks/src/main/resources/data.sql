@@ -20,15 +20,6 @@ VALUES (1, 1), (1, 2),
        (5, 2),
        (6, 2);
 
-INSERT INTO profile (userId, displayName)
-VALUES
-    (1, 'viktormkd'),
-    (2, 'bokomkd'),
-    (3, 'kikomkd'),
-    (4, 'petarmkd'),
-    (5, 'dimimkd'),
-    (6, 'pendevmkd');
-
 INSERT INTO message (messageId, senderId, receiverId, content, Timestamp)
 VALUES
     (1, 1, 3, 'zdravo kiko', '2024-03-20 12:00:00'),
