@@ -14,8 +14,8 @@ pipeline {
                     sh 'docker compose -f docker-compose.yml build'
 
                     // Tag the images
-                    sh "docker tag plumtalks-backend plumtalks-backend:${env.BUILD_NUMBER}"
-                    sh "docker tag plumtalks-frontend plumtalks-frontend:${env.BUILD_NUMBER}"
+                    sh "docker tag ${env.DOCKER_REGISTRY}/plumtalks-backend ${env.DOCKER_REGISTRY}/plumtalks-backend:${env.BUILD_NUMBER}"
+                    sh "docker tag ${env.DOCKER_REGISTRY}/plumtalks-frontend ${env.DOCKER_REGISTRY}/plumtalks-frontend:${env.BUILD_NUMBER}"
 
                     withCredentials([usernamePassword(credentialsId: env.DOCKER_CREDENTIALS_ID, usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                         sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}"
