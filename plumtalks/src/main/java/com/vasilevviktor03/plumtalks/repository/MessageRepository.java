@@ -71,7 +71,7 @@ public class MessageRepository {
             String currSql = """
                     SELECT messageId, senderId, receiverId, content, timestamp, userId as otherUserId, displayName
                     FROM message m
-                    	JOIN PROFILE p
+                    	JOIN profile p
                     	ON IF(m.senderId = ?, m.receiverId = p.userId, m.senderId = p.userId)
                     WHERE
                     	(m.senderId = ? AND m.receiverId = ?)

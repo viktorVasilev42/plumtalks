@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  mysqldb:
+    image: mysql:8.0
+    container_name: mysqldb
+    environment:
+      MYSQL_DATABASE: plumtalks_db
+      MYSQL_USER: springuser
+      MYSQL_PASSWORD: ThePassword
+      MYSQL_ROOT_PASSWORD: ThePassword
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - plumtalks-network
+    command: ["--log_bin_trust_function_creators=1"]
+
+  plumtalks:
+    build:
+      context: ./plumtalks
+      dockerfile: Dockerfile
+    container_name: plumtalks
+    depends_on:
+      - mysqldb
+    environment:
+      MYSQL_HOST: mysqldb
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/plumtalks_db
+      SPRING_DATASOURCE_USERNAME: springuser
+      SPRING_DATASOURCE_PASSWORD: ThePassword
+      SPRING_MAIL_HOST: smtp.gmail.com
+      SPRING_MAIL_PORT: 587
+      SPRING_MAIL_USERNAME: betierlistalpha@gmail.com
+      SPRING_MAIL_PASSWORD: plhxzppuqajrlkoc
+    ports:
+      - "8080:8080"
+    networks:
+      - plumtalks-network
+
+  plumtalks-frontend:
+    build:
+      context: ./plumtalks-react
+      dockerfile: Dockerfile
+    container_name: plumtalks-frontend
+    working_dir: /app
+    volumes:
+      - ./plumtalks-react:/app
+      - /app/node_modules
+    command: npm run dev
+    ports:
+      - "3000:3000"
+    depends_on:
+      - plumtalks
+    networks:
+      - plumtalks-network
+
+networks:
+  plumtalks-network:
+
+volumes:
+  mysql_data:
+

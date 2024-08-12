@@ -72,6 +72,7 @@ public class AuthenticationService {
             return new LoginResponseDTO(token, String.valueOf(currUser.getId()));
         }
         catch (AuthenticationException e) {
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
         }
     }

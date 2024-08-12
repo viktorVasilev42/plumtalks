@@ -1,19 +1,20 @@
 package com.vasilevviktor03.plumtalks.repository;
 
-import com.vasilevviktor03.plumtalks.model.ApplicationUser;
-import com.vasilevviktor03.plumtalks.model.Profile;
-import com.vasilevviktor03.plumtalks.model.Role;
-import lombok.RequiredArgsConstructor;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
-import org.springframework.stereotype.Repository;
-
 import java.sql.PreparedStatement;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
+
+import com.vasilevviktor03.plumtalks.model.ApplicationUser;
+import com.vasilevviktor03.plumtalks.model.Role;
+
+import lombok.RequiredArgsConstructor;
 
 @Repository
 @RequiredArgsConstructor
@@ -51,7 +52,7 @@ public class ApplicationUserRepository {
 
     public Optional<ApplicationUser> findUserByUsername(String username) {
         String sql = "SELECT * FROM user" +
-                " JOIN user_role_junction uj on User.userId = uj.userId JOIN role r on r.roleId = uj.roleId" +
+                " JOIN user_role_junction uj on user.userId = uj.userId JOIN role r on r.roleId = uj.roleId" +
                 " WHERE username = ?";
 
         Set<Role> roles = new HashSet<>();

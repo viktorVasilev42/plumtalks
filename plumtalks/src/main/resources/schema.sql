@@ -20,14 +20,14 @@ CREATE TABLE role
     authority NVARCHAR(30)
 );
 
-CREATE TABLE user_role_Junction
+CREATE TABLE user_role_junction
 (
     userId INT NOT NULL,
     roleId INT NOT NULL,
 
     PRIMARY KEY (userId, roleId),
-    FOREIGN KEY (userId) REFERENCES User (userId) ON DELETE CASCADE,
-    FOREIGN KEY (roleId) REFERENCES Role (roleId) ON DELETE CASCADE
+    FOREIGN KEY (userId) REFERENCES user (userId) ON DELETE CASCADE,
+    FOREIGN KEY (roleId) REFERENCES role (roleId) ON DELETE CASCADE
 );
 
 CREATE TABLE profile
@@ -35,7 +35,7 @@ CREATE TABLE profile
     userId      INT,
     displayName NVARCHAR(30),
 
-    FOREIGN KEY (userId) REFERENCES User (userId) ON DELETE CASCADE
+    FOREIGN KEY (userId) REFERENCES user (userId) ON DELETE CASCADE
 );
 
 CREATE TABLE message
