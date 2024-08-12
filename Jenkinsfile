@@ -17,12 +17,13 @@ pipeline {
                     sh "docker tag plumtalks-backend plumtalks-backend:${env.BUILD_NUMBER}"
                     sh "docker tag plumtalks-frontend plumtalks-frontend:${env.BUILD_NUMBER}"
 
-                    // Login to Docker Hub
-                    sh "echo ${env.DOCKER_PASSWORD} | docker login -u ${env.DOCKER_REGISTRY} --password-stdin"
-
-                    // Push the images to Docker Hub
-                    sh "docker push ${env.DOCKER_REGISTRY}/plumtalks-backend:${env.BUILD_NUMBER}"
-                    sh "docker push ${env.DOCKER_REGISTRY}/plumtalks-frontend:${env.BUILD_NUMBER}"
+                    withCredentials([usernamePassword(credentialsId: env.DOCKER_CREDENTIALS_ID, usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                        sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}"
+                        
+                        // Push the images to Docker Hub
+                        sh "docker push ${DOCKER_USERNAME}/plumtalks-backend:${env.BUILD_NUMBER}"
+                        sh "docker push ${DOCKER_USERNAME}/plumtalks-frontend:${env.BUILD_NUMBER}"
+                    }
                 }
             }
         }
