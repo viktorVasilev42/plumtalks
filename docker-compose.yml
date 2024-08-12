@@ -16,6 +16,7 @@ services:
     command: ["--log_bin_trust_function_creators=1"]
 
   plumtalks:
+    image: plumtalks-backend:latest
     build:
       context: ./plumtalks
       dockerfile: Dockerfile
@@ -37,6 +38,7 @@ services:
       - plumtalks-network
 
   plumtalks-frontend:
+    image: plumtalks-frontend:latest
     build:
       context: ./plumtalks-react
       dockerfile: Dockerfile
