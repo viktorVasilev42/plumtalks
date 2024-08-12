@@ -11,7 +11,7 @@ pipeline {
             steps {
                 script {
                     // Build the images using docker-compose
-                    sh 'docker-compose -f docker-compose.yml build'
+                    sh 'docker compose -f docker-compose.yml build'
 
                     // Tag the images
                     sh "docker tag plumtalks plumtalks-backend:${env.BUILD_NUMBER}"
