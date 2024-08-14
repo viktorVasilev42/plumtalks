@@ -1,6 +1,9 @@
 services:
   mysqldb:
-    image: mysql:8.0
+    build:
+      context: ./plumtalks-mysqldb
+      dockerfile: Dockerfile
+    image: viktorvasilev42/plumtalks-mysqldb:1.0
     container_name: mysqldb
     environment:
       MYSQL_DATABASE: plumtalks_db
@@ -13,7 +16,6 @@ services:
       - "3306:3306"
     networks:
       - plumtalks-network
-    command: ["--log_bin_trust_function_creators=1"]
 
   plumtalks:
     image: viktorvasilev42/plumtalks-backend:1.0

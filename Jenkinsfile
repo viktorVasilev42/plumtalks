@@ -19,6 +19,7 @@ pipeline {
                         // Push the images to Docker Hub
                         sh "docker push ${DOCKER_USERNAME}/plumtalks-backend:1.0"
                         sh "docker push ${DOCKER_USERNAME}/plumtalks-frontend:1.0"
+                        sh "docker push ${DOCKER_USERNAME}/plumtalks-mysqldb:1.0"
                     }
                 }
             }

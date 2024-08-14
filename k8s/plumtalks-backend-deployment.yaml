@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plumtalks-backend
+  namespace: plumtalks
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: plumtalks-backend
+  template:
+    metadata:
+      labels:
+        app: plumtalks-backend
+    spec:
+      containers:
+      - name: plumtalks-backend
+        image: viktorvasilev42/plumtalks-backend:1.0
+        envFrom:
+        - configMapRef:
+            name: plumtalks-config
+        - secretRef:
+            name: plumtalks-secrets
+        ports:
+        - containerPort: 8080
+
