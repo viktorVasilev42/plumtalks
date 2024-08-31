@@ -15,7 +15,7 @@ export default function useFetchChat() {
         if (contactContext?.selectedContact == -1 || chatMessages.has(contactContext?.selectedContact!)) return;
 
         const fetchMessages = () => {
-            axios.get<Array<MessageInterface>>(`http://localhost:8080/user/chatWith/${contactContext?.selectedContact}`, {
+            axios.get<Array<MessageInterface>>(`http://plumtalks.local/api/user/chatWith/${contactContext?.selectedContact}`, {
                 headers: { Authorization: `Bearer ${authContext?.authToken}` }
             })
             .then((res) => {

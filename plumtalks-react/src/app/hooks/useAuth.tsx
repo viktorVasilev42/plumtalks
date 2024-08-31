@@ -14,7 +14,7 @@ export default function useAuth() {
         const fetchAuth = async () => {
             setIsLoading(true);
             if (pathname === "/login" || pathname === "/register") return;
-            axios.get("http://localhost:8080/user", {
+            axios.get("http://plumtalks.local/api/user", {
                 headers: { Authorization: `Bearer ${authToken}` }
             })
             .then((res) => {
@@ -30,7 +30,7 @@ export default function useAuth() {
     }, [authToken, router, pathname]);
 
     const handleLogin = (emailValue: string, passwordValue: string): Promise<boolean> => {
-        return axios.post<JwtResponse>("http://localhost:8080/auth/login", {
+        return axios.post<JwtResponse>("http://plumtalks.local/api/auth/login", {
             username: `${emailValue}`,
             password: `${passwordValue}`
         })
@@ -50,7 +50,7 @@ export default function useAuth() {
     }
 
     const handleRegister = (emailValue: string, passwordValue: string): Promise<boolean> => {
-        return axios.post<boolean>("http://localhost:8080/auth/register", {
+        return axios.post<boolean>("http://plumtalks.local/api/auth/register", {
             username: `${emailValue}`,
             password: `${passwordValue}`
         })

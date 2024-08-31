@@ -8,7 +8,7 @@ export default function useSettings() {
     const router = useRouter();
 
     const updateDisplayName = (newDisplayName: string) => {
-        axios.post("http://localhost:8080/user/displayName", 
+        axios.post("http://plumtalks.local/api/user/displayName", 
         {
             "displayName": newDisplayName
         },

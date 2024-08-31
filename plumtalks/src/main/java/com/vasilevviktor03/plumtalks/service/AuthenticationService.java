@@ -95,7 +95,7 @@ public class AuthenticationService {
         helper.setSubject(subject);
 
         content = content.replace("[[name]]", user.getUsername());
-        String verifyUrl = siteUrl + "/auth/verify?code=" + user.getVerificationCode();
+        String verifyUrl = siteUrl + "/api/auth/verify?code=" + user.getVerificationCode();
         content = content.replace("[[URL]]", verifyUrl);
         helper.setText(content, true);
         mailSender.send(message);

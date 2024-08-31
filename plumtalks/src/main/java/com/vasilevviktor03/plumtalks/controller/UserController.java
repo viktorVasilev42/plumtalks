@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
-@CrossOrigin(origins = "http://localhost:3000")
+@RequestMapping("/api/user")
+@CrossOrigin(origins = "http://plumtalks.local", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 @RequiredArgsConstructor
 public class UserController {
     private final ApplicationUserService userService;

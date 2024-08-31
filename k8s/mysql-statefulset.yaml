@@ -17,6 +17,7 @@ spec:
       containers:
       - name: mysqldb
         image: viktorvasilev42/plumtalks-mysqldb:1.0
+        imagePullPolicy: Always
         envFrom:
         - secretRef:
             name: plumtalks-secrets

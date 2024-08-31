@@ -63,7 +63,7 @@ export default function useChatSocket() {
             setStompClient(null);
         }
         
-        let Sock: WebSocket | null = new SockJS("http://localhost:8080/ws");
+        let Sock: WebSocket | null = new SockJS("http://plumtalks.local/api/ws");
         let newStompClient: Client | null = over(Sock);
         newStompClient?.connect({ authToken: `${authContext?.authToken}` }, () => onConnected(newStompClient!), onError);
 

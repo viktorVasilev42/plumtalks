@@ -10,7 +10,7 @@ export default function useFetchProfiles() {
 
     useEffect(() => {
         const fetchProfiles = () => {
-            axios.get("http://localhost:8080/user/profile", {
+            axios.get("http://plumtalks.local/api/user/profile", {
                 headers: { Authorization: `Bearer ${authContext?.authToken}` }
             })
             .then((res) => {

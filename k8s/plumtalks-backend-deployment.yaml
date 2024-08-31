@@ -16,6 +16,7 @@ spec:
       containers:
       - name: plumtalks-backend
         image: viktorvasilev42/plumtalks-backend:1.0
+        imagePullPolicy: Always
         envFrom:
         - configMapRef:
             name: plumtalks-config

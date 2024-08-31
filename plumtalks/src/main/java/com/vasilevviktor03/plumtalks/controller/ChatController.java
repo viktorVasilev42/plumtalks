@@ -1,16 +1,17 @@
 package com.vasilevviktor03.plumtalks.controller;
 
-import com.vasilevviktor03.plumtalks.model.Message;
-import com.vasilevviktor03.plumtalks.model.dto.TypingDTO;
-import com.vasilevviktor03.plumtalks.service.MessageService;
-import com.vasilevviktor03.plumtalks.service.ProfileService;
-import lombok.RequiredArgsConstructor;
+import java.util.List;
+
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 
-import java.util.List;
+import com.vasilevviktor03.plumtalks.model.Message;
+import com.vasilevviktor03.plumtalks.model.dto.TypingDTO;
+import com.vasilevviktor03.plumtalks.service.MessageService;
+
+import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor

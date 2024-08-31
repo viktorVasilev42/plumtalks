@@ -12,7 +12,7 @@ export default function useFetchRecentChats() {
     useEffect(() => {
         setIsLoading(true);
         const fetchRecentChats = () => {
-            axios.get("http://localhost:8080/user/chat/recent", {
+            axios.get("http://plumtalks.local/api/user/chat/recent", {
                 headers: { Authorization: `Bearer ${authContext?.authToken}` }
             })
             .then((res) => {
