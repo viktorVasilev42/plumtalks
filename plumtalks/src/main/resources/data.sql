@@ -1,6 +1,6 @@
 INSERT INTO user (userId, username, password, verificationCode, enabled)
 VALUES
-    (1, 'viksa', '{bcrypt}$2a$12$MqnxI5YJd1nQ/sIa2zadS.1.HYkFPRlKBRI/y8M/VCW7UINh1AHWa', 'admin', 1),
+    (1, 'viktor', '{bcrypt}$2a$12$MqnxI5YJd1nQ/sIa2zadS.1.HYkFPRlKBRI/y8M/VCW7UINh1AHWa', 'admin', 1),
     (2, 'boko', '{bcrypt}$2a$12$ihXNy3HhU2ryIm37Ovoz2.kpsBk1dGvSyXPEOZzAYec32aY1oqrpW', '', 1),
     (3, 'kiko', '{bcrypt}$2a$12$U6Dp91O19XK9jB2H3ImZT.0.v4KzguG27Xmp7GlTPxSPVxrwdSKAO', '', 1),
     (4, 'petar', '{bcrypt}$2a$12$1Xm7KhG0ylTLo4gI7G/k8OjFGRFzc/yXhMm65BbRDDvw.Yt7RmVl2', '', 1),
@@ -26,4 +26,4 @@ VALUES
     (2, 3, 1, 'zdravo viktor', '2024-03-20 13:00:00'),
     (3, 3, 1, 'kako si?', '2024-03-20 13:00:05'),
     (4, 1, 3, 'eve brat terame', '2024-03-21 12:00:00'),
-    (5, 3, 1, 'eve i ja brat. go gleav wind rises. predobar e', '2024-03-22 12:00:00');
+    (5, 3, 1, 'eve i jas. go gleav wind rises. mnogu dobar film e', '2024-03-22 12:00:00');
